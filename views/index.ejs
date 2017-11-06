@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<title>Movie App</title>
 
-	<link rel="stylesheet" href="stylesheets/style.css">
+	<% include head %>
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="stylesheets/style.css"> -->
 </head>
 <body>
+
+	<%include navbar%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				
+				<!-- <form action="/search?key=butternutsquash" method="post" id="search-form" class="form-inline">
+					<input type="text" id="movie" placeholder="Movie Title" name="movieSearch" />
+					<input type="text" placeholder="Actor Name" name="actorSearch" />
+					<input type="submit" class="btn btn-primary" />
+				</form> -->
+			</div>
+			<div class="col-sm-12">
 				<% for(let i = 0; i < parsedData.length; i++){%>
 					<div class="col-sm-12 poster">
-					<img src="<%= imageBaseUrl + parsedData[i].poster_path %>"/>
+					<a href="/movie/<%=parsedData[i].id%>">
+					<img src="<%= imageBaseUrl + parsedData[i].poster_path %>"/></a>
 						<div class="col-sm-4 col-sm-offset-4">
 						<h3> <%= parsedData[i].original_title %></h3>
 						<h6> Released: <%= parsedData[i].release_date %></h6>
@@ -21,6 +35,8 @@
 					</div>
 			<%	} %>
 		</div>
+
 	</div>
 </body>
 </html>
+
